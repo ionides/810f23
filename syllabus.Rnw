@@ -1,0 +1,74 @@
+\documentclass[11pt]{article}
+\usepackage{fullpage}
+\usepackage{url}
+\parskip 5pt
+\parindent 0pt
+\pagestyle{empty}
+\begin{document}
+<<setup, include=FALSE, cache=FALSE, echo=FALSE>>=
+library(knitr)
+class1 <- as.Date("2023-8-28")
+library(xtable)
+entries <- c(
+"What is RCRS? Why are we discussing it? \\em{[pp. 1--3]}",
+"LABOR DAY",
+"Building and maintaining healthy mentor/mentee relationships. \\em{[pp. 4--7]}",
+"Publication and peer review. {\\em{[pp. 29--38]}}.",
+"Academic misconduct. \\em{[pp. 15--23]}",
+"Data and the reproducibility of research results. \\em{[pp.\ 8-11]}",
+"Conflicts of interest and conflicts of commitment. \\em{[pp. 43--47]}",
+"FALL STUDY BREAK",
+"Collaborative research; human participants \\& animal subjects. \\em{[pp.\ 24-28, 39-42, 48-49]}",
+"Negligence, mistakes \\& how to avoid them. \\em{[pp. 12--14]}",
+"Internet repositories for collaboration and open-source research: git and GitHub.",
+"Linux and the open source software movement.",
+"Parallel statistical computing.",
+"Statistical computing on greatlakes.",
+"A workflow for reproducible statistical research: combining Latex and R with knitr."
+)
+
+date.offsets <- (0:(length(entries)-1) )*7
+dates <- format.Date(class1+date.offsets,format="%b %d")
+tab <- cbind(dates,entries)
+xt <- xtable(tab, align="|c|ll|")
+
+@
+
+\rule{0mm}{2mm}
+
+\vspace{-20mm}
+
+
+\begin{center}\bf\Large
+Literature Proseminar (STATS 810, Fall \Sexpr{format.Date(class1,format='%Y')}) \\
+\rm \normalsize Monday 2:30-4:00, 1060 East Hall.
+\end{center}
+{\bf Instructor}: Edward Ionides \hfill
+{\bf Course web site}: \url{ionides.github.io/810f23/}
+
+\vspace{3mm}
+
+The first 8 weeks of Stat 810 will focus on responsible conduct of research and scholarship (RCRS). Instruction in RCRS is required by both the National Science Foundation (NSF) and the National Institutes of Health (NIH). To satisfy this federal legislation, the University of Michigan requires certification of 8 hrs of classroom discussion on RCRS for all PhD students (http://research-compliance.umich.edu/responsible-conduct-research-rcr-training\#). There will be a short weekly writing assignment so that we are all prepared in advance for each discussion.
+
+Certification of RCRS instruction is required for all PhD students and postdocs, since most PhD students and postdocs will at some point be working on federally funded projects. In order to achieve certification, attendance and participation of students is required. Therefore, for the first 8 weeks of 810, it will be necessary to check attendance. The first class of 810 will discuss why RCRS instruction has been mandated, and this would be an appropriate time to raise any concerns you might have about whether RCRS instruction is a worthwhile use of your time.
+
+The RCRS topics will include discussion about being responsible and effective as a graduate student instructor (GSI) in the Statistics department.
+
+After completion of the RCRS component, the remaining classes will discuss various issues related to statistical computation: Unix and Linux, parallel computation (the greatlakes cluster), R and Python, Latex, reproducible statistical research (knitR, Rmarkdown, Jupyter), communicating statistical methodology (R packages).
+
+
+{\bf %\large 
+Course Outline}
+
+<<schedule,echo=FALSE,results='asis'>>=
+print(xt,include.rownames=F,
+ hline.after=c(0,nrow(tab)),
+ include.colnames=F,floating=FALSE,
+ sanitize.text.function = function(x){x})
+@
+
+{\bf Reading assignments} {\em [in brackets, above]} correspond to pages of ``On Being a Scientist: A Guide to Responsible Conduct in Research: Third Edition,'' a publication of the National Academies of Science and Engineering and the National Institute of Medicine. The course website has a link to a free pdf copy.
+
+{\bf Grading}. Participation in class and homework will be assessed non-judgmentally. The expectation is that each of us should contribute to each discussion.
+
+\end{document}
