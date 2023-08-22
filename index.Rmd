@@ -1,0 +1,52 @@
+---
+title: "STATS 810 (Fall 2023) Literature Proseminar, Including Discussions on Responsible Conduct in Research and Scholarship"
+---
+
+<h3> Instructor: Edward L. Ionides </h3>
+
+-------------
+
+[Syllabus](syllabus.pdf) 
+
+Reading assignments come from "On Being a Scientist: A Guide to Responsible Conduct in Research: Third Edition," written by the National Academies Committee on Science, Engineering and Public Policy. 
+A [free pdf copy](http://www.nap.edu/catalog.php?record_id=12192) is available online.
+
+
+----------
+
+## Homework assignments 
+
+
+<!--
+
+* [Homework 1. What is responsible conduct in research and scholarship (RCRS)? Why are we discussing it?](hw01.pdf).
+
+* [Homework 2. Building and maintaining healthy mentor/mentee relationships](hw02.pdf).
+
+* [Homework 3. Publication and peer review](hw03.pdf).
+
+* [Homework 4. Academic misconduct](hw04.pdf). 
+
+* [Homework 5. Data and the reproducibility of research results](hw05.pdf).
+
+* [Homework 6. Conflicts of interest and conflicts of commitment](hw06.pdf).
+
+* [Homework 7. Collaborative research & Human participants and animal subjects](hw07.pdf).
+
+* [Homework 8. Negligence, mistakes & how to avoid them](hw08.pdf).
+
+* [Homework 9. Internet repositories for collaboration and open-source research: git and GitHub](hw09.html).
+
+* [Homework 10. Linux and the open source software movement](hw10.pdf).
+
+* [Homework 11. Parallel statistical computing](hw11.pdf).
+
+* [Homework 12. A workflow for reproducible statistical research: combining Latex and R with knitr](hw12.pdf). [Debugging hints](hw12supp.html).
+
+* [Homework 13. Statistical computing on greatlakes](hw13.pdf).
+
+-->
+
+------------
+
+-----------
