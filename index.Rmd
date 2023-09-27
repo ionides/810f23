@@ -24,9 +24,9 @@ A [free pdf copy](http://www.nap.edu/catalog.php?record_id=12192) is available o
 
 * [Homework 4. Academic misconduct](hw04.pdf). 
 
-<!--
-
 * [Homework 5. Data and the reproducibility of research results](hw05.pdf).
+
+<!--
 
 * [Homework 6. Conflicts of interest and conflicts of commitment](hw06.pdf).
 
