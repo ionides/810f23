@@ -26,9 +26,9 @@ A [free pdf copy](http://www.nap.edu/catalog.php?record_id=12192) is available o
 
 * [Homework 5. Data and the reproducibility of research results](hw05.pdf).
 
-<!--
-
 * [Homework 6. Conflicts of interest and conflicts of commitment](hw06.pdf).
+
+<!--
 
 * [Homework 7. Collaborative research & Human participants and animal subjects](hw07.pdf).
 
