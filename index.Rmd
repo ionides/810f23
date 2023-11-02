@@ -32,9 +32,9 @@ A [free pdf copy](http://www.nap.edu/catalog.php?record_id=12192) is available o
 
 * [Homework 8. Negligence, mistakes & how to avoid them](hw08.pdf).
 
-<!--
-
 * [Homework 9. Internet repositories for collaboration and open-source research: git and GitHub](hw09.html).
+
+<!--
 
 * [Homework 10. Linux and the open source software movement](hw10.pdf).
 

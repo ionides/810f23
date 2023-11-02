@@ -1,0 +1,183 @@
+---
+title: "STATS 810 Fall 2023, Homework 9. <br>Internet repositories for collaboration and open-source research: git and GitHub"
+output:
+  html_document:
+    toc: no
+
+---
+
+## Objectives
+
+* Git has become central to collaborative computing, sharing of data and code, and open source software. A professional statistician should have at least a working knowledge of git. Git is slowly becoming incorporated into more undergraduate and graduate courses, but likely this class spans a wide range from git novices to experts. If this assignment is trivial for you, consider helping others who are new to git.
+
+* GitHub is the largest git-based internet repository, but others (such as Bitbucket) also use git. You can use git to build a local repository on your own computer, though in practice it is usually convenient to have the repository linked to an internet site.
+
+* Our tasks are 
+
+    i.  Learn some ways to think about what a git repository is and how it works.
+
+    ii. Follow the instructions below to practice going through the process of editing a GitHub repository, making a fork, and submitting a pull request. These instructions emphasize command-line control of git, working locally on a terminal on your laptop. If you have only used git in a web-based context, this may be new to you. We can discuss in class why command-line control is valuable for data science. In homework 10, we will investigate command-line computing further, so if this is unfamiliar to you then please ask others for help as needed to get through this homework.
+
+    iii.  Use the self-teaching materials at [GitHub Skills](https://skills.github.com/) or [Atlassian Tutorials](https://www.atlassian.com/git/tutorials) to spend an hour or so advancing your knowledge of git. The Atlassian tutorials are good for learning command-line git, but they teach in the context of Bitbucket which is currently less popular than GitHub although both are based around the same git program. Alternatively, browse Karl Broman's practical and minimal [git/github tutorial](http://kbroman.org/github_tutorial/) which this assignment draws on.
+
+## Questions
+
+* **Q1**. Report briefly on your past experience with git. Describe the tasks you have previously used git for,  and/or say what you learned while studying for this homework. Edit the `hw09.Rmd` file from the `ionides/810f23` GitHub repository, compile this to html (for example, using Rstudio) and submit your report via Canvas as an html file.
+
+
+YOUR ANSWER HERE.
+
+* **Q2**. Complete the pull request in step 7 of the instructions below. Check before placing your pull request that you have only edited the line with your own name. The most common reason for failing at this is using an inappopriate text editor: Do not use a web page editor, as these concern themselves only with the rendered presentation of the html, not the underling text. You are also advised not to use MS Word or Mac Notes or TextEdit, since these may add hidden lines and are not good for editing plain text files. It is useful to become familiar with one or more plain text editors such as nano, emacs, vi, pico. Code editors such as vscode and the RStudio editor can be effective for this, too, but they also may suppress some lines of text to try to improve your coding experience. If this task was not entirely straightforward for you, comment briefly on any practical issues that arose while carrying it out. 
+
+YOUR ANSWER HERE.
+
+YOU CAN DELETE THE REMAINDER OF THIS FILE WHEN SUBMITTING YOUR HOMEWORK
+
+--------------
+
+--------------
+
+
+## Getting started with git and GitHub
+
+1. Get an account on GitHub, if you do not already have one.
+
+2. If git is not installed already, download and install it from [git-scm.com/downloads](http://git-scm.com/downloads).
+
+3. Set up your local git installation with your user name and email. Open a terminal and type:
+
+```
+$ git config --global user.name "Your name here"
+$ git config --global user.email "your_email@example.com"
+```
+
+Don’t type the \$; that just indicates that you’re doing this at the command line. On Windows, you can run these commands in the Linux emulator provided by the git client. Disclaimer: I do not run a Windows machine, so please let me know if Windows instructions are incorrect or out-of-date.
+
+4. Set up secure SSH communication to GitHub, following the [GitHub instructions](https://help.github.com/articles/generating-ssh-keys/). 
+
+
+------------------
+
+-----------------
+
+## Basic git concepts
+
+* **repository**. A representation of the current state of a collection of files, and its entire history of modifications. 
+
+* **commit**. A commit is a change to one or many of the files in repository. The repository therefore consists of a directed graph of all previous commits.
+
+* **branch**. Multiple versions of the collection of files can exist simultaneously in the repository. 
+These versions are called branches. 
+Branches may represent new functionality, or a bug fix, or different versions of the code with slightly different goals. 
+
+    + Branches have names. A special name called **master** is reserved for the main development branch.
+
+    + Branches can be **created**, **deleted** or **merged**. 
+
+    + Each new commit is assigned to a branch.
+
+* We now have the pieces in place to visualize the **graph** of a git repository. <small>[Picture credit: [hades.github.io](http://hades.github.io/media/git/git-history.png)]</small>
+
+<br>
+![git graph](git-history.png)
+
+* Take some time to identify the commits, branching events, and merging events on the graph.
+
+    + Note that branch names actually are names for the most recent commit on that branch, known as the **head** of the branch.
+
+-----------------
+
+----------------
+
+## An elementary task: cloning a remote repository
+
+* In a suitable directory, clone the class repository via an SSH connection:
+
+```
+git clone git@github.com:ionides/810f23
+```
+
+* You can also clone using https, e.g.,
+
+```
+git clone https://github.com/ionides/810f23
+```
+
+* GitHub requires an SSH connection for some actions, and so cloning by https is not recommended. If all you want to do is inspect a copy of the repository locally, https is sufficient.
+
+* You now have a local copy of the STATS 810 class materials.
+
+* The local repository remembers the address of the remote repository it was cloned from.
+
+    + You can pull any changes from the remote repository to your local repository using **git pull**.
+
+```
+[ionides@doob 810f23]$ git pull
+Already up-to-date.
+```
+
+----------------
+
+---------------
+
+## A workflow to contribute to the 810f23 GitHub repository
+
+* If you tell me your GitHub username, I could in principle add you as a developer of the `ionides/810f23` GitHub repository. Then you can commit changes directly.
+
+* However, here, let's practice something a bit more fancy. We will follow a standard workflow for proposing a change to someone else's GitHub repository.
+
+### Forking a project and making a pull request
+
+**Forking** is making your own GitHub copy of a repository. A **pull request** is a way to ask the owner of the repository to pull your changes back into their version. The following steps guide you through a test example.
+
+1. Go to `ionides/810f23` on GitHub, for example by searching for `810f23`.
+
+2. Click `fork` at the top right-hand corner, and follow instructions to add a forked copy to your own GitHub account. It should now show up in your account as `my_username/810f23`.
+
+3. Clone a local copy of the forked repository to your machine, e.g.,
+
+```
+git clone git@github.com:my_username/810f23
+```
+
+4. Move to the `810f23` directory and edit the file `sign_here.html` to check your own name.
+
+5. It can be helpful to type
+
+```
+git status
+```
+
+regularly to check on the current state of the repository.
+
+
+5. Commit this change to your local version of the forked `810f23`,
+
+```
+git add sign_here.html
+git commit -m "sign up for my_name"
+```
+
+and see how the `git status` has changed. Another useful command for checking on the recent action in the repository is
+
+```
+git log
+```
+
+6. Push this change to your forked copy of `810f23` on GitHub:
+
+```
+git push
+```
+
+7. On the GitHub web site for the `my_username/810f23` fork, click `New pull request` and follow instructions. When you have successfully placed your pull request, the owner of the parent repository (me) will be notifed. I will then pull the modifications from your fork into `ionides/810f23`.
+
+
+-------------
+
+
+
+
+ 
+
+
