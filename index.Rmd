@@ -36,9 +36,9 @@ A [free pdf copy](http://www.nap.edu/catalog.php?record_id=12192) is available o
 
 * [Homework 10. Linux and the open source software movement](hw10.pdf).
 
-<!--
-
 * [Homework 11. Parallel statistical computing](hw11.pdf).
+
+<!--
 
 * [Homework 12. A workflow for reproducible statistical research: combining Latex and R with knitr](hw12.pdf). [Debugging hints](hw12supp.html).
 
