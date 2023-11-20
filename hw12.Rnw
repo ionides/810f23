@@ -1,0 +1,86 @@
+\documentclass[12pt]{article}
+\usepackage{fullpage,hyperref,verbatim}\setlength{\parskip}{3mm}\setlength{\parindent}{0mm}
+\begin{document}
+
+\begin{center}\bf
+Homework 12. Due by 11:59pm on Sunday 11/26.
+
+A workflow for reproducible statistical research: combining Latex and R with knitr
+
+\end{center}
+
+There are numerous advantages to writing a statistics paper in such a way that the tables, figures and other quantitative results are automatically generated from chunks of code included in the document. These include:
+\begin{enumerate}
+\item Investigating the stability of conclusions. Questions like, ``What happens to all my figures and tables if I omit the 5 smallest states from my panel of 50 states?'' can be rapidly answered. The easier it is to investigate new analyses, the more things you explore. 
+\item Effective collaboration. All coauthors can read, run and modify all the code that produced the figures in the current version of a circulated draft.
+\item Debugging. If your adviser asks ``How exactly did this number get produced?'' you can give a rapid, precise and accurate answer.
+\item Updating. If you are presenting code (e.g., a lab presentation) and you want to make changes where necessary for a new software version, you simply re-run the document.
+\item Revisions. 4 months after you submitted the paper, when the referee reports come back, you will be glad if you have your work organized in this way!
+\end{enumerate}
+Rmarkdown and Jupyter are convenient platforms for exploratory investigations, but Rnw (a format associated with the R package knitr) is better placed to generate Latex for publication-quality pdf articles. This homework investigates a workflow, meaning a set of tools and procedures that together get research done effectively, used for the research project at \url{https://github.com/ionides/bagged_filters}.
+The code is somewhat complex and involves various features that may be new to you. You are welcome to ask your peers for help if you get stuck.
+
+Edit the file \texttt{810f23/hw12.Rnw} with your answers, build a pdf and submit it to Canvas.
+To get started, clone the \texttt{bagged\_filters} git repository to your laptop, as in Homework 9. There are two pdf files:
+  \begin{itemize}
+  \item \texttt{ms.pdf}, the main article.
+  \item \texttt{si/si.pdf}, an online supplement for the article.
+  \end{itemize}
+  We will focus on ms.pdf.
+
+\begin{enumerate}
+
+\item The source file for ms.pdf is ms.Rnw, a file in R noweb format designed to be run by \texttt{knitr::knit()}. Rstudio runs \texttt{knit()} automatically when you ask it to build from an Rnw file, but for workflows based on text commands it is good practice to call \texttt{knit()} directly from R. Rnw files simply combine chunks of \LaTeX with chunks of R code.
+
+Have you used Rnw format before, either through Rstudio or not? Rnw has some similarities with the Rmarkdown (Rmd) format. Rmd is slightly simpler and quicker for some tasks, but Rnw is better for fine control of Latex.
+
+  YOUR ANSWER HERE
+
+\item There are various ways to compile ms.Rnw to ms.pdf. All of them need the necessary R packages, which you may need to install on your laptop or greatlakes or anywhere else you try running the code.
+Note that before installing \texttt{spatPomp} you will need to have \texttt{pomp} installed, for which you may need to consult the instructions at \url{https://kingaa.github.io/pomp/install.html}.
+The installation of \texttt{pomp} is nontrivial because this package carries out compilation of C code, so you need to have a C compiler installed and talking properly to R. Time spent figuring this out is not entirely wasted, since it demonstrates an approach to combining the computational efficiency of C with the statistical analysis environment of R.
+
+Now, in an R session running in the \texttt{bagged\_filters} directory, you can run
+<<,eval=FALSE>>=       
+library(knitr)
+knit("ms.Rnw")
+@
+If all is well, this will generate a file \texttt{ms.tex} which can be used to produce \texttt{ms.pdf} by running pdflatex. Likely, issues will arise that need to be solved to get this working. Spend a reasonable amount of time trying to get this working. Some debugging advice is posted on the class website at \texttt{hw12supp.html}. It is okay if you cannot get the code to run, since the subsequent questions can be answered without this. Report on whether you were successful, what problems you overcame, and where you got stuck.
+
+YOUR ANSWER HERE.
+
+\item Have you used \texttt{make} before? (\url{https://en.wikipedia.org/wiki/Make_(software)}) This is a standard tool for organizing scientific coding projects, and it is installed by default on Mac and Linux systems. The \texttt{bagged\_filters} directory has a Makefile, so you can run
+<<,eval=FALSE>>=
+make ms.pdf
+@
+at a terminal prompt to build ms.pdf from ms.Rnw. This just runs \texttt{knit} followed by \texttt{pdflatex} so it cannot work unless the separate steps are working. For debugging, it can be better to run \texttt{knit} and \texttt{pdflatex} sequentially. Other things to experiment with if you are new to make:
+<<,eval=FALSE>>=
+make -n ms.pdf
+make -B ms.pdf
+make -nB ms.pdf
+@
+Try this, and report briefly
+
+YOUR ANSWER HERE.
+
+\item The manuscript can also be built on greatlakes, and this is appropriate for a production version having numerical calculations too extensive for a laptop. However, the version of \texttt{ms.Rnw} in the repository is set to run quickly, via the code \texttt{run\_level <- 1}. This lets you run a preliminary version, for testing and debugging, fairly quickly on a laptop.
+
+ Writing a reasonably large reproducible document combining text and code, you cannot avoid the issue of caching. You do not want to re-run all computations each time you edit any text in the document, so you must save (i.e., cache) results that do not need to be recomputed. Ideally, when we edit code we would re-run only the partial results that have changed as a consequence of the edit. Sadly, it is intractable to automate this in a foolproof way. The knitr code chunk option \texttt{cache=TRUE} re-runs a code chunk if that particular chunk is edited. It is necessary to delete all cached files (e.g., \texttt{rm -rf cache}) occasionally to rebuild the cache correctly. In ms.Rnw, the \texttt{stew()} function from the \texttt{pomp} package is used to give additional manual control of caching the most time-consuming results. To remove all the results for \texttt{run\_level=1} we can do
+<<,eval=F>>=
+rm -rf *_1
+@
+Have you had any prior experience working with cache on reproducible documents?
+
+YOUR ANSWER HERE.
+
+\item Workflows for writing manuscripts are built up over years, borrowed, shared, and modified for different purposes and evolving technologies. Compare this workflow with the range of techniques you already use.
+
+YOUR ANSWER HERE.
+
+\item Notice how the random number generator seed is set to give reproducible results (e.g., search for ``seed'' in ms.Rnw). Subtle problems can arise when setting seeds for parallel computations. Can you think of any? This code attempts to deal with them via the \texttt{doRNG} R package.
+
+YOUR ANSWER HERE.
+
+\end{enumerate}
+
+\end{document}
