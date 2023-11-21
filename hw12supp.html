@@ -1,0 +1,38 @@
+<h1 id="supplement-to-homework-12">Supplement to Homework 12</h1>
+<h2 id="if-your-latex-distribution-is-missing-sty-files">If your Latex
+distribution is missing <code>sty</code> files</h2>
+<ul>
+<li><p>You can copy missing <code>sty</code> files into your working
+directory from the internet .</p></li>
+<li><p>Better, you can get a more complete Latex distribution. On a Mac,
+if you install <code>Xcode</code>,
+<code>Xcode command line tools</code>, and <code>MacPorts</code> (all of
+which are good to have for scientific computing) you can open a terminal
+and run</p></li>
+</ul>
+<pre><code>sudo port install texlive-latex-extra</code></pre>
+<ul>
+<li>If you do not have Latex on your laptop, and it is a UM Mac laptop,
+you can install MacTex via the Managed Software Center. Once this is
+installed, and your machine is restarted, then you can check that
+<code>pdflatex</code> is on the search path by typing in a terminal</li>
+</ul>
+<pre><code>which pdflatex</code></pre>
+<h2 id="if-you-have-problems-running-the-code-in-rstudio">If you have
+problems running the code in Rstudio</h2>
+<ul>
+<li><p>Note that the homework does not ask you to use Rstudio. You can
+just run R in a terminal window.</p></li>
+<li><p>Using Rstudio sometimes introduces problems. This is fairly rare,
+but in this particular case it happened to several people that Rstudio
+behaved inappropriately with the Rnw file.</p></li>
+<li><p>In general, stripping away an unnecessary layer of code (here,
+Rstudio) is worth trying when debugging.</p></li>
+</ul>
+<h2 id="installation-of-missing-packages">Installation of missing
+packages</h2>
+<ul>
+<li>Most people will have to install missing R packages. The code needs
+at least the following packages:</li>
+</ul>
+<pre><code>ggplot2, knitr, doParallel, doRNG, fields, pomp, spatPomp</code></pre>

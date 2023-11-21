@@ -38,9 +38,11 @@ A [free pdf copy](http://www.nap.edu/catalog.php?record_id=12192) is available o
 
 * [Homework 11. Parallel statistical computing](hw11.pdf).
 
-<!--
+* [Homework 12. A workflow for reproducible statistical research: combining Latex and R with knitr](hw12.pdf).
 
-* [Homework 12. A workflow for reproducible statistical research: combining Latex and R with knitr](hw12.pdf). [Debugging hints](hw12supp.html).
+    + [Debugging hints for homework 12](hw12supp.html).
+
+<!--
 
 * [Homework 13. Statistical computing on greatlakes](hw13.pdf).
 
