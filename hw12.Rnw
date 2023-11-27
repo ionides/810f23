@@ -30,7 +30,13 @@ To get started, clone the \texttt{bagged\_filters} git repository to your laptop
 
 \begin{enumerate}
 
-\item The source file for ms.pdf is ms.Rnw, a file in R noweb format designed to be run by \texttt{knitr::knit("ms.Rnw")}. Rstudio runs \texttt{knit()} automatically when you ask it to build from an Rnw file, but for workflows based on text commands it is good practice to call \texttt{knit()} directly from R. Rnw files simply combine chunks of \LaTeX with chunks of R code.
+\item The source file for ms.pdf is ms.Rnw, a file in R noweb format designed to be run using \texttt{knitr::knit("ms.Rnw")}, which requires the \texttt{knitr} package to be installed. Rnw files simply combine chunks of \LaTeX with chunks of R code.
+
+Rstudio runs \texttt{knit()} automatically when you ask it to build pdf from an Rnw file, if you have set the relevant option:
+<<rstudio-option,engine='bash',eval=FALSE>>=
+Tools -> Global Options -> Sweave -> Weave Rnw files using: knitr
+@
+However, for workflows based on text commands it is good practice to call \texttt{knit()} directly from R. 
 
 Have you used Rnw format before, either through Rstudio or not? Rnw has some similarities with the Rmarkdown (Rmd) format. Rmd is slightly simpler and quicker for some tasks, but Rnw is better for fine control of Latex.
 
@@ -41,7 +47,7 @@ Note that before installing \texttt{spatPomp} you will need to have \texttt{pomp
 The installation of \texttt{pomp} is nontrivial because this package carries out compilation of C code, so you need to have a C compiler installed and talking properly to R. Time spent figuring this out is not entirely wasted, since it demonstrates an approach to combining the computational efficiency of C with the statistical analysis environment of R.
 
 Now, in an R session running in the \texttt{bagged\_filters} directory, you can run
-<<,eval=FALSE>>=       
+<<knit,eval=FALSE>>=       
 library(knitr)
 knit("ms.Rnw")
 @
@@ -50,11 +56,11 @@ If all is well, this will generate a file \texttt{ms.tex} which can be used to p
 YOUR ANSWER HERE.
 
 \item Have you used \texttt{make} before? (\url{https://en.wikipedia.org/wiki/Make_(software)}) This is a standard tool for organizing scientific coding projects, and it is installed by default on Mac and Linux systems. The \texttt{bagged\_filters} directory has a Makefile, so you can run
-<<,eval=FALSE>>=
+<<make,engine='bash',eval=FALSE>>=
 make ms.pdf
 @
 at a terminal prompt to build ms.pdf from ms.Rnw. This just runs \texttt{knit} followed by \texttt{pdflatex} so it cannot work unless the separate steps are working. For debugging, it can be better to run \texttt{knit} and \texttt{pdflatex} sequentially. Other things to experiment with if you are new to make:
-<<,eval=FALSE>>=
+<<make-options,engine='bash',eval=FALSE>>=
 make -n ms.pdf
 make -B ms.pdf
 make -nB ms.pdf
@@ -66,7 +72,7 @@ YOUR ANSWER HERE.
 \item The manuscript can also be built on greatlakes, and this is appropriate for a production version having numerical calculations too extensive for a laptop. However, the version of \texttt{ms.Rnw} in the repository is set to run quickly, via the code \texttt{run\_level <- 1}. This lets you run a preliminary version, for testing and debugging, fairly quickly on a laptop.
 
  Writing a reasonably large reproducible document combining text and code, you cannot avoid the issue of caching. You do not want to re-run all computations each time you edit any text in the document, so you must save (i.e., cache) results that do not need to be recomputed. Ideally, when we edit code we would re-run only the partial results that have changed as a consequence of the edit. Sadly, it is intractable to automate this in a foolproof way. The knitr code chunk option \texttt{cache=TRUE} re-runs a code chunk if that particular chunk is edited. Therefore, it may be necessary to delete all cached files (e.g., \texttt{rm -rf cache}) to force \texttt{knitr} to rebuild the cache correctly. In ms.Rnw, the \texttt{stew()} function from the \texttt{pomp} package is used to give additional manual control of caching the most time-consuming results. To remove all the results for \texttt{run\_level=1} we can do
-<<,eval=F>>=
+<<rm,engine='bash',eval=F>>=
 rm -rf *_1
 @
 Have you had any prior experience working with cache on reproducible documents?
