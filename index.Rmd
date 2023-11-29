@@ -44,7 +44,8 @@ A [free pdf copy](http://www.nap.edu/catalog.php?record_id=12192) is available o
 
 * [Homework 13. Statistical computing on greatlakes](hw13.pdf).
 
-
+    + [Introductory notes on command-line usage of greatlakes](gl/slides.pdf).
+    
 ------------
 
 -----------
