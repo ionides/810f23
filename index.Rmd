@@ -42,11 +42,8 @@ A [free pdf copy](http://www.nap.edu/catalog.php?record_id=12192) is available o
 
     + [Debugging hints for homework 12](hw12supp.html).
 
-<!--
-
 * [Homework 13. Statistical computing on greatlakes](hw13.pdf).
 
--->
 
 ------------
 
